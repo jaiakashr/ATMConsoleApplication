@@ -24,7 +24,7 @@ public class Main {
 				System.out.println("1. Check Balance ");
 				System.out.println("2. Deposit Money ");
 				System.out.println("3. Withdraw Money");
-				System.out.println("4. Create PIN ");
+				System.out.println("4. Change PIN ");
 				System.out.println("5. Exit");
 				
 				System.out.println("Enter your Choice : ");
@@ -48,6 +48,16 @@ public class Main {
 					break;
 					
 				case 4:
+					System.out.println("Enter Current PIN : ");
+					int currentPin = scan.nextInt();
+					
+					System.out.println("Enter New PIN : ");
+					int newPin = scan.nextInt();
+					
+					System.out.println("Confirm New PIN : ");
+					int confirmPin = scan.nextInt();
+					
+					atm.changePin(currentPin, newPin, confirmPin);
 					break;
 					
 				case 5:

@@ -37,6 +37,28 @@ public class ATM {
 		}
 	}
 	
+	public boolean changePin(int currentPin, int newPin, int confirmPin) {
+		if(currentPin != pin) {
+			System.out.println("Incorrect current PIN");
+			return false;
+		}
+		
+		if(newPin != confirmPin) {
+			System.out.println("New PINs does not match.");
+			return false;
+		}
+		
+		if(newPin <1000 || newPin > 9999) {
+			System.out.println("PIN must contain only 4 digits!");
+			return false;
+		}
+		
+		pin = newPin;
+		
+		System.out.println("PIN changed Successfully.");
+		return true;
+	}
+	
 	public void checkBalance() {
 		System.out.println("Currrent balance Rs."+balance);;
 	}
