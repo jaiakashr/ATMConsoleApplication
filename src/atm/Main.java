@@ -8,10 +8,29 @@ public class Main {
 		
 		ATM atm = new ATM(2203, 985);
 		
-		System.out.println("Enter your PIN :");
-		int enteredPin = scan.nextInt();
-		if(atm.verifyPin(enteredPin)) {
-			System.out.println("Login Successfully");
+		int attempts =3;
+		boolean loginSuccessfull = true;
+		
+		while(attempts>0) {
+			System.out.println("Enter your PIN :");
+			int enteredPin = scan.nextInt();
+			
+			if(atm.verifyPin(enteredPin)) {
+				System.out.println("Login Successfully");
+				break;
+			}else {
+				attempts--;
+				System.out.println("Incorrect PIN");
+				if(attempts>0) {
+					System.out.println("attempts remaining "+attempts);
+				}
+			}
+		}
+		
+		if(!loginSuccessfull  ) {
+			System.out.println("You entered too many attempts. ");
+			System.out.println("Login Failed!");
+		}else {
 			
 			int choice = 0;
 			
@@ -64,11 +83,8 @@ public class Main {
 					System.out.println("Thank you using our ATM. ");
 					break;
 			}
-			}
-		}else {
-			System.out.println("Incorrect PIN");
 		}
-		
-		scan.close();
+			scan.close();
+		}
 	}
 }
