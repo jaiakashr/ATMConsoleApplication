@@ -2,6 +2,7 @@ package atm;
 
 public class ATM {
 	
+	private double atmcash = 50000;
 	private int pin;
 	private double balance;
 	
@@ -28,13 +29,35 @@ public class ATM {
 		if(amount<=0) {
 			System.out.println("Invalid amount ");
 		}
-		else if(amount<balance) {
-			balance = balance - amount;
-			System.out.println("Rs."+amount+" withdrawal successfully. ");
-			System.out.println("Your current balance is "+balance+".");
-		}else {
-			System.out.println("Insufficient Balance! Can't able to withdraw. ");
+		
+		else if(amount %100 != 0) {
+			System.out.println("Enter amount in multiples of 100!.");
 		}
+		
+		else if(amount>balance){
+			System.out.println("Insufficient account balance!.");
+		}
+		
+		else if(amount > atmcash) {
+			System.out.println("ATM has insufficient cash!.");
+		}
+		
+		else {
+			balance = balance - amount;
+			atmcash = atmcash - amount;
+			
+			System.out.println("Withdrawal Successfull.");
+			System.out.println("Amount : Rs."+amount);
+			System.out.println("Current account balance : Rs."+balance);
+		}
+		
+//		else if(amount<balance) {
+//			balance = balance - amount;
+//			System.out.println("Rs."+amount+" withdrawal successfully. ");
+//			System.out.println("Your current balance is "+balance+".");
+//		}else {
+//			System.out.println("Insufficient Balance! Can't able to withdraw. ");
+//		}
 	}
 	
 	public boolean changePin(int currentPin, int newPin, int confirmPin) {

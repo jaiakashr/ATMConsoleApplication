@@ -6,7 +6,7 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		
-		ATM atm = new ATM(2203, 985);
+		ATM atm = new ATM(2203, 60000);
 		
 		int attempts =3;
 		boolean loginSuccessfull = true;
